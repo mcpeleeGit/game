@@ -1,0 +1,49 @@
+key,ko,en,ja,zh_CN
+TITLE_GAME,기사의 여정,Knight's Journey,騎士の旅,骑士的旅程
+TITLE_SUBTITLE,탐험과 전투의 세계,A world of exploration and battle,探検と戦闘の世界,探索与战斗的世界
+TITLE_START,시작,Start,スタート,开始
+TITLE_CONTINUE,이어하기,Continue,続ける,继续
+TITLE_SETTINGS,설정,Settings,設定,设置
+TITLE_QUIT,종료,Quit,終了,退出
+TITLE_FOOTER,v0.1  ·  탐험/전투 RPG,v0.1  ·  Exploration/Battle RPG,v0.1  ·  探検/戦闘RPG,v0.1  ·  探索/战斗RPG
+SETTINGS_TITLE,설정,Settings,設定,设置
+SETTINGS_LANGUAGE,언어,Language,言語,语言
+SETTINGS_PLACEHOLDER,설정 메뉴는 준비 중입니다.,Settings are under development.,設定メニューは準備中です。,设置菜单准备中。
+LANG_KO,한국어,Korean,韓国語,韩语
+LANG_EN,English,English,英語,英语
+LANG_JA,日本語,Japanese,日本語,日语
+LANG_ZH,中文,Chinese,中国語,中文
+HUD_HP,HP,HP,HP,生命
+HUD_GOLD,Gold,Gold,ゴールド,金币
+MAP_GOAL,목표: 숲의 이상 징후를 조사하라.,Objective: Investigate the strange signs in the forest.,目標: 森の異変を調査せよ。,目标：调查森林的异常迹象。
+MAP_HINT,힌트: 지역을 클릭해 이동하세요.,Hint: Click a region to travel.,ヒント: 地域をクリックして移動。,提示：点击地区移动。
+MAP_CLICK_HINT,▶ 지도에서 숲 지역을 클릭하세요,▶ Click the forest on the map,▶ 地図で森の地域をクリック,▶ 点击地图上的森林区域
+MAP_FOREST,숲,Forest,森,森林
+MAP_RUINS,유적,Ruins,遺跡,遗迹
+MAP_VOLCANO,화산,Volcano,火山,火山
+TOAST_FOREST,숲으로 이동합니다,Heading to the forest.,森へ向かいます。,前往森林。
+TOAST_RUINS,유적으로 이동합니다,Heading to the ruins.,遺跡へ向かいます。,前往遗迹。
+TOAST_VOLCANO,화산으로 이동합니다,Heading to the volcano.,火山へ向かいます。,前往火山。
+CARD_LEVEL,권장 레벨 %d,Recommended Lv.%d,推奨Lv.%d,推荐等级 %d
+FLAVOR_FOREST,발견: 고블린 흔적,Goblin traces found.,発見: ゴブリンの痕跡。,发现：哥布林的痕迹。
+FLAVOR_RUINS,고대 유적이 남아 있다,Ancient ruins remain.,古代遺跡が残っている。,古代遗迹犹存。
+FLAVOR_VOLCANO,보스: 화산의 드래곤,Boss: Volcano Dragon.,ボス: 火山のドラゴン。,首领：火山之龙。
+LOCKED_REASON_FOREST,숲의 위협을 먼저 해결해야 한다.,Clear the forest threat first.,森の脅威を先に解決せよ。,请先解决森林的威胁。
+LOCKED_DEFAULT,아직 갈 수 없다.,Not available yet.,まだ行けない。,尚无法前往。
+REGION_INTRO,숲 안쪽에서 수상한 기척이 느껴진다…,Something stirs in the depths of the forest…,森の奥で不審な気配がする…,森林深处似有异样……
+REGION_INTRO_RUINS,무너진 유적에서 묘한 기운이 느껴진다…,A strange aura emanates from the crumbling ruins….,崩れた遺跡から妙な気配がする…,崩塌的遗迹中传来诡异的气息……
+HINT_FOREST_CLEAR,숲의 기척이 한결 잦아든 것 같다. 이제 자유롭게 탐험할 수 있습니다.,The forest feels calmer. You may explore freely now.,森の気配が落ち着いたようだ。自由に探索できる。,森林的气息平静了下来。现在可以自由探索了。
+HINT_RUINS,유적을 조사해 보자.,Investigate the ruins.,遺跡を調査しよう。,调查遗迹吧。
+BTN_FIGHT,전투 시작,Battle,戦闘開始,开始战斗
+BTN_INVESTIGATE_RUINS,유적을 조사한다,Investigate the ruins.,遺跡を調査する,调查遗迹
+BTN_BACK,돌아가기,Back,戻る,返回
+BATTLE_ATTACK,공격,Attack,攻撃,攻击
+BATTLE_RUN,도망,Run,逃げる,逃跑
+BATTLE_ENEMY,Enemy,Enemy,敵,敌人
+BATTLE_DEFEAT,패배…,Defeat…,敗北…,失败…
+BATTLE_TUTORIAL,이것이 전투의 기본이다.,This is the basics of battle.,これが戦闘の基本だ。,这是战斗的基础。
+BATTLE_VICTORY_HP,승리! (플레이어 HP: %d),Victory! (HP: %d),勝利! (HP: %d),胜利！（HP：%d）
+REWARD_GOLD,+%d Gold,+%d Gold,+%d ゴールド,+%d 金币
+REWARD_FRAGMENT,+1 Ancient Fragment,+1 Ancient Fragment,+1 古代の欠片,+1 古代碎片
+PROLOGUE_TEXT,불과 숲이 공존하던 세계. 그 균형이 무너지고 있다…,A world where fire and forest coexisted. That balance is crumbling….,火と森が共存した世界。その均衡が崩れつつある…,火与森林共存的世界。那份平衡正在崩塌……
+PROLOGUE_SKIP,클릭하면 건너뜁니다,Click to skip,クリックでスキップ,点击跳过

@@ -1,0 +1,22 @@
+# Godot
+.import/
+.export/
+*.translation
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*~
+# Mono / C#
+.mono/
+# Godot 4 cache
+.godot/
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# Build outputs
+build/
+dist/

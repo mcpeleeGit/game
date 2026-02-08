@@ -1,0 +1,15 @@
+# CI: 빌드 및 테스트 (추후 설정)
+name: CI
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # - name: Setup / Build / Test
+      #   run: |
+      #     echo "Add your build and test steps here"

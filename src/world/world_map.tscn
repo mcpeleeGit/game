@@ -1,0 +1,230 @@
+[gd_scene load_steps=4 format=3 uid="uid://world_map"]
+
+[ext_resource type="Script" path="res://src/world/world_map.gd" id="1_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_forest"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ruins"]
+radius = 100.0
+
+[node name="WorldMap" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="MapSprite" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+centered = true
+
+[node name="ForestHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(880, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForestHotspot"]
+shape = SubResource("CircleShape2D_forest")
+
+[node name="DebugLabel" type="Label" parent="ForestHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.75, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "FOREST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ForestClearedBadge" type="Label" parent="ForestHotspot"]
+visible = false
+offset_left = -48.0
+offset_top = -28.0
+offset_right = 48.0
+offset_bottom = -12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.4, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "✓"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RuinsHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(740, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RuinsHotspot"]
+shape = SubResource("CircleShape2D_ruins")
+
+[node name="DebugLabel" type="Label" parent="RuinsHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "RUINS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 220.0
+offset_bottom = 72.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HPLabel" type="Label" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 204.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "HP: 100/100"
+
+[node name="GoldLabel" type="Label" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = 28.0
+offset_right = 204.0
+offset_bottom = 52.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.95, 0.85, 0.25, 1)
+theme_override_font_sizes/font_size = 18
+text = "Gold: 0"
+
+[node name="Fade" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GoalBox" type="VBoxContainer" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -80.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="GoalLabel" type="Label" parent="UI/GoalBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.92, 0.88, 1)
+theme_override_font_sizes/font_size = 18
+text = "목표: 숲의 이상 징후를 조사하라."
+autowrap_mode = 2
+
+[node name="HintLabel" type="Label" parent="UI/GoalBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.72, 0.68, 1)
+theme_override_font_sizes/font_size = 14
+text = "힌트: 지역을 클릭해 이동하세요."
+autowrap_mode = 2
+
+[node name="PersistentHint" type="Label" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -48.0
+offset_right = -24.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_font_sizes/font_size = 20
+text = "▶ 지도에서 숲 지역을 클릭하세요"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Toast" type="Label" parent="UI"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = -80.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "숲으로 이동합니다"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RegionCard" type="PanelContainer" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -90.0
+offset_right = 200.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="UI/RegionCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="UI/RegionCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="RegionName" type="Label" parent="UI/RegionCard/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "FOREST"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="UI/RegionCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.78, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "권장 레벨 1"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="FlavorLabel" type="Label" parent="UI/RegionCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.68, 0.62, 1)
+theme_override_font_sizes/font_size = 14
+text = "발견: 고블린 흔적"
+horizontal_alignment = 1
+autowrap_mode = 2

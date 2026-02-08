@@ -1,0 +1,45 @@
+extends Node
+## Autoload: 전역 게임 상태
+
+var language: String = "ko"
+var current_region_id: String = ""
+var player_hp: int = 100
+var player_max_hp: int = 100
+var gold: int = 0
+## 세션 단위 1회 (앱 종료 시 리셋). 세이브 붙이면 SaveData로 옮기면 됨.
+var world_map_first_click_done: bool = false
+## 첫 전투(튜토리얼) 완료 후부터 랜덤 인카운터/자유 전투
+var first_battle_done: bool = false
+## 지금 들어온 전투가 첫 전투인지 (지역에서 true로 세팅 후 배틀 씬으로)
+var is_first_battle: bool = false
+## 숲 1회 클리어 여부 (월드맵/다음 지역 연출용)
+var forest_cleared_once: bool = false
+## 월드맵 떠날 때 골드 (복귀 시 증가 애니용, -1이면 미설정)
+var world_map_last_gold: int = -1
+## 유적 보상 아이템 (나중에 상점/강화 연동)
+var ancient_fragments: int = 0
+
+# ====================== 직렬화 (세이브/로드) ======================
+func to_dict() -> Dictionary:
+	return {
+		"language": language,
+		"player_hp": player_hp,
+		"player_max_hp": player_max_hp,
+		"gold": gold,
+		"current_region_id": current_region_id,
+		"world_map_first_click_done": world_map_first_click_done,
+		"first_battle_done": first_battle_done,
+		"forest_cleared_once": forest_cleared_once,
+		"ancient_fragments": ancient_fragments,
+	}
+
+func from_dict(data: Dictionary) -> void:
+	language = data.get("language", "ko")
+	player_hp = data.get("player_hp", 100)
+	player_max_hp = data.get("player_max_hp", 100)
+	gold = data.get("gold", 0)
+	current_region_id = data.get("current_region_id", "")
+	world_map_first_click_done = data.get("world_map_first_click_done", false)
+	first_battle_done = data.get("first_battle_done", false)
+	forest_cleared_once = data.get("forest_cleared_once", false)
+	ancient_fragments = data.get("ancient_fragments", 0)

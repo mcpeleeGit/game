@@ -1,0 +1,13 @@
+SIL OPEN FONT LICENSE Version 1.1
+================================
+
+This font is licensed under the SIL Open Font License, Version 1.1.
+Full license text: https://openfontlicense.org/ofl-1-1.html
+
+Permission & Conditions:
+- Free to use, modify, and distribute (commercial and non-commercial).
+- Bundling in games and software is permitted.
+- Font files may not be sold by themselves.
+
+When distributing this font, include this OFL.txt file.
+For Noto Sans CJK: Copyright © Google. Licensed under SIL OFL 1.1.

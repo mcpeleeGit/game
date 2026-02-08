@@ -1,0 +1,40 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Game"
+config/description="개인 게임 개발 프로젝트"
+run/main_scene="res://src/main.tscn"
+config/features=PackedStringArray("4.6")
+
+[autoload]
+
+GameState="*res://src/systems/game_state.gd"
+LanguageManager="*res://src/systems/language_manager.gd"
+SaveManager="*res://src/systems/save_manager.gd"
+SceneRouter="*res://src/systems/scene_router.gd"
+SoundFx="*res://src/systems/sound_fx.gd"
+
+[gui]
+
+theme/custom="res://theme/default_theme.tres"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=2
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

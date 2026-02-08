@@ -1,0 +1,94 @@
+[gd_scene load_steps=2 format=3 uid="uid://region_forest"]
+
+[ext_resource type="Script" path="res://src/regions/region_forest.gd" id="1_script"]
+
+[node name="RegionForest" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="BgSprite" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(640, 360)
+centered = true
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(640, 520)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Background" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.06, 0.08, 0.05, 0.35)
+
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 200.0
+offset_right = 80.0
+offset_bottom = 250.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 28
+text = "FOREST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IntroMessage" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 120.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.82, 1)
+theme_override_font_sizes/font_size = 18
+text = "숲 안쪽에서 수상한 기척이 느껴진다…"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RegionHint" type="Label" parent="UI"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -220.0
+offset_top = 120.0
+offset_right = 220.0
+offset_bottom = 180.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.75, 0.9, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "숲의 기척이 한결 잦아든 것 같다.\n이제 자유롭게 탐험할 수 있습니다."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FightButton" type="Button" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 260.0
+offset_right = 80.0
+offset_bottom = 310.0
+grow_horizontal = 2
+text = "전투 시작"
+
+[node name="BackButton" type="Button" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 330.0
+offset_right = 80.0
+offset_bottom = 380.0
+grow_horizontal = 2
+text = "돌아가기"
