@@ -2,6 +2,7 @@ extends Node2D
 ## 숲 지역: 진입 메시지 → (첫 방문 시) 4초 후 강제 첫 전투 → 이후 전투 시작 버튼
 
 const BG_PATH := "res://assets/images/backgrounds/forest_intro.png"
+const BG_RUINS_PATH := "res://assets/images/backgrounds/ruins_intro.png"
 const PLAYER_SCENE := "res://src/player/player.tscn"
 const BATTLE_PATH := "res://src/battle/battle.tscn"
 const WORLD_MAP_PATH := "res://src/world/world_map.tscn"
@@ -17,7 +18,8 @@ const FIRST_BATTLE_DELAY := 5.0
 func _ready() -> void:
 	add_to_group("i18n")
 	refresh_text()
-	_apply_texture($BgSprite, BG_PATH, true)
+	var bg_path: String = BG_RUINS_PATH if GameState.current_region_id == "ruins" else BG_PATH
+	_apply_texture($BgSprite, bg_path, true)
 	var player := load(PLAYER_SCENE) as PackedScene
 	if player:
 		var p := player.instantiate()

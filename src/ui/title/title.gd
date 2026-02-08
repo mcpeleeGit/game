@@ -15,6 +15,7 @@ extends Control
 @onready var settings_title: Label = $SettingsPanel/Margin/VBox/SettingsTitle
 @onready var language_label: Label = $SettingsPanel/Margin/VBox/LanguageLabel
 @onready var language_option: OptionButton = $SettingsPanel/Margin/VBox/LanguageOption
+@onready var hp_gauge_check: CheckButton = $SettingsPanel/Margin/VBox/HPGaugeCheck
 @onready var settings_back_btn: Button = $SettingsPanel/Margin/VBox/BackButton
 
 const BG_PATH := "res://assets/images/backgrounds/title_opening.png"
@@ -23,8 +24,7 @@ const LANG_CODES := ["ko", "en", "ja", "zh_CN"]
 const LANG_KEYS := ["LANG_KO", "LANG_EN", "LANG_JA", "LANG_ZH"]
 
 func _ready() -> void:
-	if SaveManager.has_save():
-		SaveManager.load_game()
+	# 세이브는 "이어하기"에서만 로드. 시작 버튼은 새 게임이므로 여기서 로드하지 않음.
 	LanguageManager.apply(GameState.language)
 	var tex := load(BG_PATH) as Texture2D
 	if tex:
@@ -40,6 +40,7 @@ func _ready() -> void:
 	quit_btn.pressed.connect(_on_quit_pressed)
 	settings_back_btn.pressed.connect(_on_settings_back)
 	language_option.item_selected.connect(_on_language_selected)
+	hp_gauge_check.toggled.connect(_on_hp_gauge_toggled)
 	_bind_hover(start_btn)
 	_bind_hover(continue_btn)
 	_bind_hover(settings_btn)
@@ -63,6 +64,7 @@ func refresh_text() -> void:
 	footer.text = tr("TITLE_FOOTER")
 	settings_title.text = tr("SETTINGS_TITLE")
 	language_label.text = tr("SETTINGS_LANGUAGE")
+	hp_gauge_check.text = tr("SETTINGS_HP_GAUGE")
 	settings_back_btn.text = tr("BTN_BACK")
 	for i in LANG_KEYS.size():
 		language_option.set_item_text(i, tr(LANG_KEYS[i]))
@@ -77,14 +79,17 @@ func _start_fade_in() -> void:
 	tween.tween_property(overlay, "modulate", Color(1, 1, 1, 0), FADE_DURATION)
 
 func _on_start_pressed() -> void:
+	GameState.reset_to_new_game()
 	SaveManager.delete_save()
 	SceneRouter.goto("res://src/ui/prologue/prologue.tscn")
 
 func _on_continue_pressed() -> void:
-	if SaveManager.load_game():
+	if SaveManager.has_save() and SaveManager.load_game():
+		LanguageManager.apply(GameState.language)
 		SceneRouter.goto("res://src/world/world_map.tscn")
 
 func _on_settings_pressed() -> void:
+	hp_gauge_check.button_pressed = GameState.show_hp_gauge
 	settings_panel.visible = true
 
 func _on_settings_back() -> void:
@@ -93,6 +98,10 @@ func _on_settings_back() -> void:
 func _on_language_selected(index: int) -> void:
 	if index >= 0 and index < LANG_CODES.size():
 		LanguageManager.apply(LANG_CODES[index])
+
+func _on_hp_gauge_toggled(pressed: bool) -> void:
+	GameState.show_hp_gauge = pressed
+	SaveManager.save_game()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

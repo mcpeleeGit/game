@@ -8,6 +8,9 @@ TITLE_QUIT,종료,Quit,終了,退出
 TITLE_FOOTER,v0.1  ·  탐험/전투 RPG,v0.1  ·  Exploration/Battle RPG,v0.1  ·  探検/戦闘RPG,v0.1  ·  探索/战斗RPG
 SETTINGS_TITLE,설정,Settings,設定,设置
 SETTINGS_LANGUAGE,언어,Language,言語,语言
+SETTINGS_HP_GAUGE,캐릭터 위 HP 게이지 표시,Show HP gauge above characters,キャラの上にHPゲージを表示,在角色上方显示HP条
+BATTLE_ENEMY_1,적 1,Enemy 1,敵1,敌人1
+BATTLE_ENEMY_2,적 2,Enemy 2,敵2,敌人2
 SETTINGS_PLACEHOLDER,설정 메뉴는 준비 중입니다.,Settings are under development.,設定メニューは準備中です。,设置菜单准备中。
 LANG_KO,한국어,Korean,韓国語,韩语
 LANG_EN,English,English,英語,英语
@@ -20,10 +23,28 @@ MAP_HINT,힌트: 지역을 클릭해 이동하세요.,Hint: Click a region to tr
 MAP_CLICK_HINT,▶ 지도에서 숲 지역을 클릭하세요,▶ Click the forest on the map,▶ 地図で森の地域をクリック,▶ 点击地图上的森林区域
 MAP_FOREST,숲,Forest,森,森林
 MAP_RUINS,유적,Ruins,遺跡,遗迹
+MAP_CASTLE,성,Castle,城,城堡
 MAP_VOLCANO,화산,Volcano,火山,火山
 TOAST_FOREST,숲으로 이동합니다,Heading to the forest.,森へ向かいます。,前往森林。
-TOAST_RUINS,유적으로 이동합니다,Heading to the ruins.,遺跡へ向かいます。,前往遗迹。
+TOAST_CASTLE,성으로 이동합니다,Heading to the castle.,城へ向かいます。,前往城堡。
 TOAST_VOLCANO,화산으로 이동합니다,Heading to the volcano.,火山へ向かいます。,前往火山。
+FLAVOR_CASTLE,마을·상점. 회복과 강화의 허브.,Town & shop. A hub for rest and upgrade.,街・ショップ。回復と強化の拠点。,城镇与商店。恢复与强化的据点。
+CASTLE_INTRO,성 안에는 상점과 휴식 공간이 있다. 골드로 아이템을 구매할 수 있다.,The castle holds a shop and rest area. Spend gold to buy items.,城にはショップと休息の場がある。ゴールドでアイテムを購入できる。,城堡内有商店与休息处。可用金币购买道具。
+BTN_SHOP,상점 가기,Go to shop.,ショップへ,前往商店
+SHOP_TITLE,아이템 상점,Item Shop,アイテムショップ,道具商店
+SHOP_GOLD,골드: %d,Gold: %d,ゴールド: %d,金币：%d
+SHOP_NOT_ENOUGH_GOLD,골드가 부족합니다.,Not enough gold.,ゴールドが足りません。,金币不足。
+SHOP_BUY_SUCCESS,구입 완료: %s,Purchased: %s,購入完了: %s,购买成功：%s
+SHOP_SELECT_HINT,아이템을 선택하세요.,Select an item.,アイテムを選択してください。,请选择道具。
+SHOP_BUY,구매,Buy,購入,购买
+SHOP_PRICE,가격,Price,価格,价格
+ITEM_POTION_SMALL,소형 회복 포션,Small Potion,小型回復ポーション,小型恢复药水
+ITEM_POTION_SMALL_DESC,HP를 20 회복한다.,Restores 20 HP.,HPを20回復する。,恢复20点生命值。
+ITEM_POTION_MEDIUM,중형 회복 포션,Medium Potion,中型回復ポーション,中型恢复药水
+ITEM_POTION_MEDIUM_DESC,HP를 50 회복한다.,Restores 50 HP.,HPを50回復する。,恢复50点生命值。
+ITEM_ANTIDOTE,해독제,Antidote,解毒剤,解毒剂
+ITEM_ANTIDOTE_DESC,독을 제거한다.,Cures poison.,毒を解除する。,解除中毒。
+TOAST_RUINS,유적으로 이동합니다,Heading to the ruins.,遺跡へ向かいます。,前往遗迹。
 CARD_LEVEL,권장 레벨 %d,Recommended Lv.%d,推奨Lv.%d,推荐等级 %d
 FLAVOR_FOREST,발견: 고블린 흔적,Goblin traces found.,発見: ゴブリンの痕跡。,发现：哥布林的痕迹。
 FLAVOR_RUINS,고대 유적이 남아 있다,Ancient ruins remain.,古代遺跡が残っている。,古代遗迹犹存。

@@ -8,6 +8,9 @@ radius = 100.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ruins"]
 radius = 100.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_castle"]
+radius = 80.0
+
 [node name="WorldMap" type="Node2D"]
 script = ExtResource("1_script")
 
@@ -55,6 +58,27 @@ position = Vector2(740, 320)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RuinsHotspot"]
 shape = SubResource("CircleShape2D_ruins")
+
+[node name="CastleHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(900, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastleHotspot"]
+shape = SubResource("CircleShape2D_castle")
+
+[node name="DebugLabel" type="Label" parent="CastleHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "CASTLE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DebugLabel" type="Label" parent="RuinsHotspot"]
 offset_left = -40.0

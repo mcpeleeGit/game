@@ -36,6 +36,15 @@ position = Vector2(0, 0)
 centered = true
 scale = Vector2(0.2, 0.2)
 
+[node name="HPGauge" type="ProgressBar" parent="World/Player"]
+offset_left = -24.0
+offset_top = -56.0
+offset_right = 24.0
+offset_bottom = -48.0
+show_percentage = false
+value = 100.0
+max_value = 100.0
+
 [node name="Enemy" type="Node2D" parent="World"]
 position = Vector2(940, 420)
 
@@ -49,6 +58,39 @@ scale = Vector2(0.12, 0.12)
 position = Vector2(0, 0)
 centered = true
 scale = Vector2(0.12, 0.12)
+
+[node name="HPGauge" type="ProgressBar" parent="World/Enemy"]
+offset_left = -24.0
+offset_top = -56.0
+offset_right = 24.0
+offset_bottom = -48.0
+show_percentage = false
+value = 30.0
+max_value = 30.0
+
+[node name="Enemy2" type="Node2D" parent="World"]
+position = Vector2(500, 500)
+visible = false
+
+[node name="Shadow" type="Sprite2D" parent="World/Enemy2"]
+z_index = -1
+position = Vector2(0, 28)
+centered = true
+scale = Vector2(0.12, 0.12)
+
+[node name="EnemyAnim" type="AnimatedSprite2D" parent="World/Enemy2"]
+position = Vector2(0, 0)
+centered = true
+scale = Vector2(0.12, 0.12)
+
+[node name="HPGauge" type="ProgressBar" parent="World/Enemy2"]
+offset_left = -24.0
+offset_top = -56.0
+offset_right = 24.0
+offset_bottom = -48.0
+show_percentage = false
+value = 22.0
+max_value = 22.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 

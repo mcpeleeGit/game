@@ -18,6 +18,25 @@ var forest_cleared_once: bool = false
 var world_map_last_gold: int = -1
 ## 유적 보상 아이템 (나중에 상점/강화 연동)
 var ancient_fragments: int = 0
+## 캐릭터 위 HP 게이지 표시 (옵션, 기본 ON)
+var show_hp_gauge: bool = true
+## 인벤토리: 아이템 ID → 개수 (상점 구매/사용 반영)
+var inventory: Dictionary = {}
+
+## 새 게임 시작 시 상태 초기화 (타이틀에서 "시작" 선택 시 호출)
+func reset_to_new_game() -> void:
+	language = "ko"
+	current_region_id = ""
+	player_hp = 100
+	player_max_hp = 100
+	gold = 0
+	world_map_first_click_done = false
+	first_battle_done = false
+	is_first_battle = false
+	forest_cleared_once = false
+	world_map_last_gold = -1
+	ancient_fragments = 0
+	inventory = {}
 
 # ====================== 직렬화 (세이브/로드) ======================
 func to_dict() -> Dictionary:
@@ -31,6 +50,8 @@ func to_dict() -> Dictionary:
 		"first_battle_done": first_battle_done,
 		"forest_cleared_once": forest_cleared_once,
 		"ancient_fragments": ancient_fragments,
+		"show_hp_gauge": show_hp_gauge,
+		"inventory": inventory.duplicate(),
 	}
 
 func from_dict(data: Dictionary) -> void:
@@ -43,3 +64,5 @@ func from_dict(data: Dictionary) -> void:
 	first_battle_done = data.get("first_battle_done", false)
 	forest_cleared_once = data.get("forest_cleared_once", false)
 	ancient_fragments = data.get("ancient_fragments", 0)
+	show_hp_gauge = data.get("show_hp_gauge", true)
+	inventory = data.get("inventory", {})

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br75kn57rdrrp"
-path="res://.godot/imported/battle_ground_ruins.jpeg-4cd7f3f6c89d3ae2cd5a9d0c6f9ce169.ctex"
+uid="uid://bk4cm0prln143"
+path="res://.godot/imported/battle_ruins.png-2bcad22eab55d5a5bbf6f789824c30e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/backgrounds/battle_ground_ruins.jpeg"
-dest_files=["res://.godot/imported/battle_ground_ruins.jpeg-4cd7f3f6c89d3ae2cd5a9d0c6f9ce169.ctex"]
+source_file="res://assets/images/backgrounds/battle_ruins.png"
+dest_files=["res://.godot/imported/battle_ruins.png-2bcad22eab55d5a5bbf6f789824c30e0.ctex"]
 
 [params]
 

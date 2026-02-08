@@ -13,7 +13,7 @@ const TOAST_TIME := 1.0
 const REGION_POSITIONS: Dictionary = {
 	"forest": Vector2(240, -80),
 	"ruins": Vector2(240, 60),
-	"castle": Vector2(260, -120),
+	"castle": Vector2(0, 0),
 	"volcano": Vector2(-40, -160),
 	"snow": Vector2(-300, -180),
 }
@@ -35,6 +35,13 @@ const REGIONS: Dictionary = {
 		"toast_key": "TOAST_RUINS",
 		"requires": "forest_cleared_once",
 		"locked_reason_key": "LOCKED_REASON_FOREST",
+	},
+	"castle": {
+		"name_key": "MAP_CASTLE",
+		"level": 0,
+		"flavor_key": "FLAVOR_CASTLE",
+		"scene": "res://src/regions/region_castle.tscn",
+		"toast_key": "TOAST_CASTLE",
 	},
 	"volcano": {
 		"name_key": "MAP_VOLCANO",
@@ -79,6 +86,10 @@ func _ready() -> void:
 	ruins.input_event.connect(_on_hotspot_input.bind("ruins"))
 	if ruins.has_node("DebugLabel"):
 		ruins.get_node("DebugLabel").mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var castle: Area2D = $CastleHotspot
+	castle.input_event.connect(_on_hotspot_input.bind("castle"))
+	if castle.has_node("DebugLabel"):
+		castle.get_node("DebugLabel").mouse_filter = Control.MOUSE_FILTER_IGNORE
 	refresh_text()
 	_animate_gold_if_changed()
 	_run_entry_sequence()
@@ -89,6 +100,8 @@ func refresh_text() -> void:
 	persistent_hint.text = tr("MAP_CLICK_HINT")
 	forest_debug_label.text = tr("MAP_FOREST")
 	ruins_debug_label.text = tr("MAP_RUINS")
+	if has_node("CastleHotspot/DebugLabel"):
+		$CastleHotspot/DebugLabel.text = tr("MAP_CASTLE")
 	_update_hud()
 
 func _update_hud() -> void:
@@ -133,6 +146,7 @@ func _setup_map_texture() -> void:
 		$MapSprite.position = view / 2.0
 		$ForestHotspot.position = $MapSprite.position + REGION_POSITIONS["forest"]
 		$RuinsHotspot.position = $MapSprite.position + REGION_POSITIONS["ruins"]
+		$CastleHotspot.position = $MapSprite.position + REGION_POSITIONS["castle"]
 
 func _run_entry_sequence() -> void:
 	_fade_alpha(fade_rect, 1.0, 0.0, FADE_DURATION)
@@ -202,7 +216,9 @@ func _toast_then_show_region_card(region_id: String) -> void:
 func _show_region_card_then_go(region_id: String) -> void:
 	var data: Dictionary = REGIONS[region_id]
 	region_name_label.text = tr(data.get("name_key", ""))
-	region_level_label.text = tr("CARD_LEVEL") % data.get("level", 1)
+	var level: int = data.get("level", 1)
+	region_level_label.visible = level > 0
+	region_level_label.text = tr("CARD_LEVEL") % level
 	region_flavor_label.text = tr(data.get("flavor_key", ""))
 	region_card.visible = true
 	region_card.modulate.a = 1.0
