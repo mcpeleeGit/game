@@ -11,6 +11,24 @@ radius = 100.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_castle"]
 radius = 80.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pond"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_beach"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tavern"]
+radius = 55.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_guild"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_library"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lighthouse"]
+radius = 50.0
+
 [node name="WorldMap" type="Node2D"]
 script = ExtResource("1_script")
 
@@ -91,6 +109,145 @@ theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 14
 text = "RUINS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RuinsClearedBadge" type="Label" parent="RuinsHotspot"]
+visible = false
+offset_left = -48.0
+offset_top = -28.0
+offset_right = 48.0
+offset_bottom = -12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.4, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "✓"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PondHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(820, 460)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PondHotspot"]
+shape = SubResource("CircleShape2D_pond")
+
+[node name="DebugLabel" type="Label" parent="PondHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.6, 0.85, 1.0, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "연못"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BeachHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(820, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeachHotspot"]
+shape = SubResource("CircleShape2D_beach")
+
+[node name="DebugLabel" type="Label" parent="BeachHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "해변"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LighthouseHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(900, 545)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LighthouseHotspot"]
+shape = SubResource("CircleShape2D_lighthouse")
+
+[node name="DebugLabel" type="Label" parent="LighthouseHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.9, 0.7, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "등대"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TavernHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(560, 415)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TavernHotspot"]
+shape = SubResource("CircleShape2D_tavern")
+
+[node name="DebugLabel" type="Label" parent="TavernHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.55, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "선술집"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GuildHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(490, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GuildHotspot"]
+shape = SubResource("CircleShape2D_guild")
+
+[node name="DebugLabel" type="Label" parent="GuildHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.9, 0.8, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "길드"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LibraryHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(370, 375)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LibraryHotspot"]
+shape = SubResource("CircleShape2D_library")
+
+[node name="DebugLabel" type="Label" parent="LibraryHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "도서관"
 horizontal_alignment = 1
 vertical_alignment = 1
 

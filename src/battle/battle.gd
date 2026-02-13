@@ -218,8 +218,10 @@ func _on_attack() -> void:
 		player_anim.play("idle_down")
 
 	var base_dmg: int = 15 if GameState.is_first_battle else 10
+	if GameState.tavern_2048_upgraded:
+		base_dmg *= 2
 	var dmg_to_enemy: int = maxi(1, base_dmg - enemy_defense)
-	var is_ruins_multi: bool = GameState.current_region_id == "ruins" && enemy2_node.visible
+	var is_ruins_multi: bool = GameState.current_region_id == "ruins" && enemy2_max_hp > 0
 
 	if is_ruins_multi:
 		# 한 명씩 타겟: 적1 먼저, 죽었으면 적2
@@ -298,6 +300,8 @@ func _victory_flow() -> void:
 		gained_fragment = true
 	if not GameState.is_first_battle and GameState.current_region_id == "forest":
 		GameState.forest_cleared_once = true
+	if not GameState.is_first_battle and GameState.current_region_id == "ruins":
+		GameState.ruins_cleared_once = true
 
 	reward_label.text = (tr("REWARD_GOLD") % gold_amount) + ("\n" + tr("REWARD_FRAGMENT") if gained_fragment else "")
 	reward_popup.visible = true
@@ -316,13 +320,13 @@ func refresh_text() -> void:
 	run_btn.text = tr("BATTLE_RUN")
 
 func _all_enemies_defeated() -> bool:
-	if GameState.current_region_id == "ruins" && enemy2_node.visible:
+	if GameState.current_region_id == "ruins" && enemy2_max_hp > 0:
 		return enemy1_hp <= 0 && enemy2_hp <= 0
 	return enemy_hp <= 0
 
 func _update_hud() -> void:
 	player_hp_label.text = "%s: %d/%d" % [tr("HUD_HP"), GameState.player_hp, GameState.player_max_hp]
-	if GameState.current_region_id == "ruins" && enemy2_node.visible:
+	if GameState.current_region_id == "ruins" && enemy2_max_hp > 0:
 		enemy_hp_label.text = "%s: %d/%d\n%s: %d/%d" % [
 			tr("BATTLE_ENEMY_1"), enemy1_hp, enemy1_max_hp,
 			tr("BATTLE_ENEMY_2"), enemy2_hp, enemy2_max_hp
@@ -346,7 +350,7 @@ func _update_character_gauges() -> void:
 		player_gauge.max_value = GameState.player_max_hp
 		player_gauge.value = GameState.player_hp
 	if enemy_gauge and enemy_gauge.visible:
-		if GameState.current_region_id == "ruins" and enemy2_node.visible:
+		if GameState.current_region_id == "ruins" and enemy2_max_hp > 0:
 			enemy_gauge.max_value = enemy1_max_hp
 			enemy_gauge.value = enemy1_hp
 			enemy_gauge.visible = enemy1_hp > 0

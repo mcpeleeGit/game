@@ -24,6 +24,12 @@ MAP_CLICK_HINT,▶ 지도에서 숲 지역을 클릭하세요,▶ Click the fore
 MAP_FOREST,숲,Forest,森,森林
 MAP_RUINS,유적,Ruins,遺跡,遗迹
 MAP_CASTLE,성,Castle,城,城堡
+MAP_POND,연못,Pond,池,池塘
+MAP_BEACH,해변,Beach,浜,海滩
+MAP_LIGHTHOUSE,등대,Lighthouse,灯台,灯塔
+MAP_TAVERN,선술집,Tavern,酒場,酒馆
+MAP_GUILD,길드,Guild,ギルド,工会
+MAP_LIBRARY,도서관,Library,図書館,图书馆
 MAP_VOLCANO,화산,Volcano,火山,火山
 TOAST_FOREST,숲으로 이동합니다,Heading to the forest.,森へ向かいます。,前往森林。
 TOAST_CASTLE,성으로 이동합니다,Heading to the castle.,城へ向かいます。,前往城堡。
@@ -38,6 +44,24 @@ SHOP_BUY_SUCCESS,구입 완료: %s,Purchased: %s,購入完了: %s,购买成功�
 SHOP_SELECT_HINT,아이템을 선택하세요.,Select an item.,アイテムを選択してください。,请选择道具。
 SHOP_BUY,구매,Buy,購入,购买
 SHOP_PRICE,가격,Price,価格,价格
+BTN_INVENTORY,가방,Inventory,バッグ,背包
+INVENTORY_TITLE,가방,Inventory,バッグ,背包
+INVENTORY_SELECT_HINT,아이템을 선택하세요.,Select an item.,アイテムを選択してください。,请选择道具。
+INVENTORY_COUNT,보유: %d개,Owned: %d,所持: %d個,拥有：%d个
+INVENTORY_USE,사용,Use,使用,使用
+INVENTORY_USE_SUCCESS,%s 사용: HP +%s,%s used: HP +%s,%s使用: HP +%s,%s使用：HP +%s
+INVENTORY_USE_SUCCESS_ANTIDOTE,%s 사용 완료,%s used.,%s使用完了,%s使用完成
+FISHING_HINT,타이밍을 맞춰 클릭하세요!,Click when the bar is in the green zone!,緑のゾーンでクリック！,在绿色区域点击！
+FISHING_READY,준비...,Ready...,準備中...,准备中...
+FISHING_START,낚시 시작,Start Fishing,釣り開始,开始钓鱼
+FISHING_CATCH,잡기!,Catch!,釣る！,抓住！
+FISHING_IN_PROGRESS,낚시 중...,Fishing...,釣り中...,钓鱼中...
+FISHING_SUCCESS,성공!,Success!,成功！,成功！
+FISHING_FAIL,실패...,Failed...,失敗...,失败...
+FISHING_REWARD,+%d 골드,+%d Gold,+%d ゴールド,+%d 金币
+FISHING_REWARD_ITEM,+%d 골드 & %s,+%d Gold & %s,+%d ゴールド & %s,+%d 金币 & %s
+FISHING_SUCCESS_HINT,잘했어요! 다시 낚시하시겠어요?,Well done! Try again?,よくできました！もう一度？,做得好！再试一次？
+FISHING_FAIL_HINT,타이밍을 놓쳤습니다. 다시 시도하세요.,Missed the timing. Try again.,タイミングを逃しました。もう一度。,错过了时机。再试一次。
 ITEM_POTION_SMALL,소형 회복 포션,Small Potion,小型回復ポーション,小型恢复药水
 ITEM_POTION_SMALL_DESC,HP를 20 회복한다.,Restores 20 HP.,HPを20回復する。,恢复20点生命值。
 ITEM_POTION_MEDIUM,중형 회복 포션,Medium Potion,中型回復ポーション,中型恢复药水
@@ -58,6 +82,41 @@ HINT_RUINS,유적을 조사해 보자.,Investigate the ruins.,遺跡を調査し
 BTN_FIGHT,전투 시작,Battle,戦闘開始,开始战斗
 BTN_INVESTIGATE_RUINS,유적을 조사한다,Investigate the ruins.,遺跡を調査する,调查遗迹
 BTN_BACK,돌아가기,Back,戻る,返回
+TETRIS_START,시작,Start,スタート,开始
+TETRIS_SCORE,점수: %d,Score: %d,スコア: %d,得分：%d
+TETRIS_LEVEL,레벨: %d,Level: %d,レベル: %d,等级：%d
+TETRIS_LINES,라인: %d,Lines: %d,ライン: %d,消除行：%d
+TETRIS_GAME_OVER,게임 오버! 점수: %d,Game Over! Score: %d,ゲームオーバー! スコア: %d,游戏结束！得分：%d
+TETRIS_RESTART,다시 하기,Restart,やり直す,重新开始
+PUZZLE_SCORE,점수: %d,Score: %d,スコア: %d,得分：%d
+PUZZLE_BEST,최고: %d,Best: %d,最高: %d,最高：%d
+PUZZLE_GAME_OVER,게임 오버!,Game Over!,ゲームオーバー!,游戏结束！
+PUZZLE_WIN,2048 도달!,Reached 2048!,2048達成!,达到2048！
+PUZZLE_RESTART,다시 하기,Restart,やり直す,重新开始
+PUZZLE_HINT,방향키로 타일을 움직이세요,Use arrow keys to slide tiles,方向キーでタイルを動かす,使用方向键移动方块
+PUZZLE_CONTINUE,계속하기,Continue,続ける,继续
+PUZZLE_UPGRADE,레벨업! HP 2000, 공격력 2배!,Level up! HP 2000, 2x Attack!,レベルアップ! HP 2000, 攻撃2倍!,升级！HP 2000，攻击力2倍！
+BTN_HELP,게임 방법,How to Play,遊び方,游戏说明
+BTN_CLOSE,닫기,Close,閉じる,关闭
+TYPING_LEVEL,레벨 %d,Level %d,レベル%d,等级 %d
+TYPING_SCORE,점수: %d,Score: %d,スコア: %d,得分：%d
+TYPING_LIVES,생명: %d,Lives: %d,ライフ: %d,生命：%d
+TYPING_GAME_OVER,게임 오버!,Game Over!,ゲームオーバー!,游戏结束！
+TYPING_HINT,단어를 입력하고 Enter,Type word and press Enter,単語を入力してEnter,输入单词并按 Enter
+HELP_TYPING,낙하하는 단어를 입력해 맞추세요. 레벨이 올라갈수록 속도 up,Type falling words to clear them. Speed increases per level,落下する単語を入力して消そう。レベルで速度UP,输入落下的单词来消除。等级越高速度越快
+TYPING_TITLE,등대 타자 연습,Lighthouse Typing,灯台タイピング,灯塔打字练习
+HELP_PUZZLE_2048,"방향키(←↑↓→)로 타일을 움직이세요.\n같은 숫자가 부딪히면 합쳐집니다.\n2048을 만들면 승리! 계속 플레이도 가능합니다.\n움직일 수 없으면 게임 오버입니다.","Use arrow keys to slide tiles.\nSame numbers merge when they touch.\nReach 2048 to win! You can keep playing.\nGame over when no valid moves remain.","方向キーでタイルを動かす。\n同じ数字が当たると合体。2048で勝利!\n続けてプレイも可。","用方向键移动方块。\n相同数字相撞会合并。\n达到2048即获胜！可继续游玩。"
+HELP_TETRIS,"방향키 ←→: 좌우 이동\n방향키 ↓: 빠르게 내리기\n방향키 ↑ / 스페이스: 회전\nPage Up: 즉시 떨어뜨리기\n줄을 꽉 채우면 삭제되고 점수!","←→: Move left/right\n↓: Soft drop\n↑/Space: Rotate\nPage Up: Hard drop\nFill a line to clear it and score!","←→: 左右移動\n↓: ソフトドロップ\n↑/Space: 回転\nPage Up: ハードドロップ","←→: 左右移动\n↓: 软降落\n↑/空格: 旋转\nPage Up: 硬降落"
+HELP_FISHING,"낚시 시작 후 막대가 움직입니다.\n녹색 구간(타겟) 안에 막대가 있을 때\n잡기 버튼을 누르세요!\n5초 안에 클릭해야 합니다.","After starting, the bar moves.\nPress Catch when the bar is in the green zone!\nYou must click within 5 seconds.","開始後、バーが動く。\n緑ゾーンにバーが入ったら釣る！","开始后横条会移动。\n当横条进入绿色区域时点击抓住！"
+SLOT_SPIN,스핀 (5G),Spin (5G),スピン (5G),旋转 (5G)
+SLOT_WIN,+%d 골드!,+%d Gold!,+%d ゴールド!,+%d 金币！
+SLOT_LOSE,꽝...,No win,ハズレ...,未中奖
+SLOT_JACKPOT,잭팟! +1000 골드!,Jackpot! +1000 Gold!,ジャックポット! +1000G!,杰克pot！+1000金币！
+SLOT_NO_GOLD,골드가 부족합니다,Not enough gold,ゴールドが足りません,金币不足
+HELP_SLOT,5골드로 스핀. 3개/2개 일치 시 보상. 7,7,7 잭팟 1000골드!,Spend 5G to spin. Match 3 or 2 for reward. 7,7,7 = 1000G jackpot!,5Gでスピン。3つ/2つ揃うと報酬。7,7,7で1000G!,花费5金币旋转。3个或2个相同获得奖励。7,7,7=1000金币！
+HELP_MEMORY,카드를 클릭해 같은 짝을 찾으세요. 최소 이동으로 모두 맞추면 성공!,Click cards to find matching pairs. Match all with few moves to win!,カードをクリックして同じペアを探す。少ない手数で揃えよう！,点击卡片找到相同配对。用最少步数完成即获胜！
+MEMORY_MOVES,이동: %d,Moves: %d,手数: %d,步数：%d
+MEMORY_COMPLETE,%d회 만에 완료!,Completed in %d moves!,%d手でクリア！,%d步完成！
 BATTLE_ATTACK,공격,Attack,攻撃,攻击
 BATTLE_RUN,도망,Run,逃げる,逃跑
 BATTLE_ENEMY,Enemy,Enemy,敵,敌人

@@ -14,6 +14,8 @@ var first_battle_done: bool = false
 var is_first_battle: bool = false
 ## 숲 1회 클리어 여부 (월드맵/다음 지역 연출용)
 var forest_cleared_once: bool = false
+## 유적 1회 클리어 여부 (월드맵 클리어 표시용)
+var ruins_cleared_once: bool = false
 ## 월드맵 떠날 때 골드 (복귀 시 증가 애니용, -1이면 미설정)
 var world_map_last_gold: int = -1
 ## 유적 보상 아이템 (나중에 상점/강화 연동)
@@ -22,6 +24,8 @@ var ancient_fragments: int = 0
 var show_hp_gauge: bool = true
 ## 인벤토리: 아이템 ID → 개수 (상점 구매/사용 반영)
 var inventory: Dictionary = {}
+## 선술집 2048에서 2048점 달성 시 1회만 적용되는 업그레이드
+var tavern_2048_upgraded: bool = false
 
 ## 새 게임 시작 시 상태 초기화 (타이틀에서 "시작" 선택 시 호출)
 func reset_to_new_game() -> void:
@@ -34,9 +38,11 @@ func reset_to_new_game() -> void:
 	first_battle_done = false
 	is_first_battle = false
 	forest_cleared_once = false
+	ruins_cleared_once = false
 	world_map_last_gold = -1
 	ancient_fragments = 0
 	inventory = {}
+	tavern_2048_upgraded = false
 
 # ====================== 직렬화 (세이브/로드) ======================
 func to_dict() -> Dictionary:
@@ -49,9 +55,11 @@ func to_dict() -> Dictionary:
 		"world_map_first_click_done": world_map_first_click_done,
 		"first_battle_done": first_battle_done,
 		"forest_cleared_once": forest_cleared_once,
+		"ruins_cleared_once": ruins_cleared_once,
 		"ancient_fragments": ancient_fragments,
 		"show_hp_gauge": show_hp_gauge,
 		"inventory": inventory.duplicate(),
+		"tavern_2048_upgraded": tavern_2048_upgraded,
 	}
 
 func from_dict(data: Dictionary) -> void:
@@ -63,6 +71,8 @@ func from_dict(data: Dictionary) -> void:
 	world_map_first_click_done = data.get("world_map_first_click_done", false)
 	first_battle_done = data.get("first_battle_done", false)
 	forest_cleared_once = data.get("forest_cleared_once", false)
+	ruins_cleared_once = data.get("ruins_cleared_once", false)
 	ancient_fragments = data.get("ancient_fragments", 0)
 	show_hp_gauge = data.get("show_hp_gauge", true)
 	inventory = data.get("inventory", {})
+	tavern_2048_upgraded = data.get("tavern_2048_upgraded", false)

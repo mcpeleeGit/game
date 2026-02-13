@@ -23,16 +23,16 @@ SaveManager="*res://src/systems/save_manager.gd"
 SceneRouter="*res://src/systems/scene_router.gd"
 SoundFx="*res://src/systems/sound_fx.gd"
 
-[gui]
-
-theme/custom="res://theme/default_theme.tres"
-
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=2
 window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom="res://theme/default_theme.tres"
 
 [rendering]
 

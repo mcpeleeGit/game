@@ -13,6 +13,12 @@ const TOAST_TIME := 1.0
 const REGION_POSITIONS: Dictionary = {
 	"forest": Vector2(240, -80),
 	"ruins": Vector2(240, 60),
+	"pond": Vector2(180, 100),  # 유적 아래 왼쪽
+	"beach": Vector2(180, 140),  # 연못 아래
+	"lighthouse": Vector2(300, 220),  # 해변 아래 오른쪽 등대
+	"tavern": Vector2(-80, 55),  # 성 왼쪽 아래 건물
+	"guild": Vector2(-200, 40),  # 선술집 왼쪽 더 큰 건물
+	"library": Vector2(-310, 15),  # 길드 왼쪽 위 건물
 	"castle": Vector2(0, 0),
 	"volcano": Vector2(-40, -160),
 	"snow": Vector2(-300, -180),
@@ -84,12 +90,54 @@ func _ready() -> void:
 		forest.get_node("ForestClearedBadge").visible = GameState.forest_cleared_once
 	var ruins: Area2D = $RuinsHotspot
 	ruins.input_event.connect(_on_hotspot_input.bind("ruins"))
+	ruins.mouse_entered.connect(_on_ruins_mouse_entered)
+	ruins.mouse_exited.connect(_on_ruins_mouse_exited)
 	if ruins.has_node("DebugLabel"):
 		ruins.get_node("DebugLabel").mouse_filter = Control.MOUSE_FILTER_IGNORE
+	if ruins.has_node("RuinsClearedBadge"):
+		ruins.get_node("RuinsClearedBadge").visible = GameState.ruins_cleared_once
 	var castle: Area2D = $CastleHotspot
 	castle.input_event.connect(_on_hotspot_input.bind("castle"))
+	castle.mouse_entered.connect(_on_castle_mouse_entered)
+	castle.mouse_exited.connect(_on_castle_mouse_exited)
 	if castle.has_node("DebugLabel"):
 		castle.get_node("DebugLabel").mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var pond: Area2D = $PondHotspot
+	pond.input_event.connect(_on_pond_input)
+	pond.mouse_entered.connect(_on_pond_mouse_entered)
+	pond.mouse_exited.connect(_on_pond_mouse_exited)
+	if pond.has_node("DebugLabel"):
+		pond.get_node("DebugLabel").mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var beach: Area2D = $BeachHotspot
+	beach.input_event.connect(_on_beach_input)
+	beach.mouse_entered.connect(_on_beach_mouse_entered)
+	beach.mouse_exited.connect(_on_beach_mouse_exited)
+	if beach.has_node("DebugLabel"):
+		beach.get_node("DebugLabel").mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var lighthouse: Area2D = $LighthouseHotspot
+	lighthouse.input_event.connect(_on_lighthouse_input)
+	lighthouse.mouse_entered.connect(_on_lighthouse_mouse_entered)
+	lighthouse.mouse_exited.connect(_on_lighthouse_mouse_exited)
+	if lighthouse.has_node("DebugLabel"):
+		lighthouse.get_node("DebugLabel").mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var tavern: Area2D = $TavernHotspot
+	tavern.input_event.connect(_on_tavern_input)
+	tavern.mouse_entered.connect(_on_tavern_mouse_entered)
+	tavern.mouse_exited.connect(_on_tavern_mouse_exited)
+	if tavern.has_node("DebugLabel"):
+		tavern.get_node("DebugLabel").mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var guild: Area2D = $GuildHotspot
+	guild.input_event.connect(_on_guild_input)
+	guild.mouse_entered.connect(_on_guild_mouse_entered)
+	guild.mouse_exited.connect(_on_guild_mouse_exited)
+	if guild.has_node("DebugLabel"):
+		guild.get_node("DebugLabel").mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var library: Area2D = $LibraryHotspot
+	library.input_event.connect(_on_library_input)
+	library.mouse_entered.connect(_on_library_mouse_entered)
+	library.mouse_exited.connect(_on_library_mouse_exited)
+	if library.has_node("DebugLabel"):
+		library.get_node("DebugLabel").mouse_filter = Control.MOUSE_FILTER_IGNORE
 	refresh_text()
 	_animate_gold_if_changed()
 	_run_entry_sequence()
@@ -102,6 +150,18 @@ func refresh_text() -> void:
 	ruins_debug_label.text = tr("MAP_RUINS")
 	if has_node("CastleHotspot/DebugLabel"):
 		$CastleHotspot/DebugLabel.text = tr("MAP_CASTLE")
+	if has_node("PondHotspot/DebugLabel"):
+		$PondHotspot/DebugLabel.text = tr("MAP_POND")
+	if has_node("BeachHotspot/DebugLabel"):
+		$BeachHotspot/DebugLabel.text = tr("MAP_BEACH")
+	if has_node("LighthouseHotspot/DebugLabel"):
+		$LighthouseHotspot/DebugLabel.text = tr("MAP_LIGHTHOUSE")
+	if has_node("TavernHotspot/DebugLabel"):
+		$TavernHotspot/DebugLabel.text = tr("MAP_TAVERN")
+	if has_node("GuildHotspot/DebugLabel"):
+		$GuildHotspot/DebugLabel.text = tr("MAP_GUILD")
+	if has_node("LibraryHotspot/DebugLabel"):
+		$LibraryHotspot/DebugLabel.text = tr("MAP_LIBRARY")
 	_update_hud()
 
 func _update_hud() -> void:
@@ -147,6 +207,12 @@ func _setup_map_texture() -> void:
 		$ForestHotspot.position = $MapSprite.position + REGION_POSITIONS["forest"]
 		$RuinsHotspot.position = $MapSprite.position + REGION_POSITIONS["ruins"]
 		$CastleHotspot.position = $MapSprite.position + REGION_POSITIONS["castle"]
+		$PondHotspot.position = $MapSprite.position + REGION_POSITIONS["pond"]
+		$BeachHotspot.position = $MapSprite.position + REGION_POSITIONS["beach"]
+		$LighthouseHotspot.position = $MapSprite.position + REGION_POSITIONS["lighthouse"]
+		$TavernHotspot.position = $MapSprite.position + REGION_POSITIONS["tavern"]
+		$GuildHotspot.position = $MapSprite.position + REGION_POSITIONS["guild"]
+		$LibraryHotspot.position = $MapSprite.position + REGION_POSITIONS["library"]
 
 func _run_entry_sequence() -> void:
 	_fade_alpha(fade_rect, 1.0, 0.0, FADE_DURATION)
@@ -159,6 +225,114 @@ func _on_forest_mouse_entered() -> void:
 
 func _on_forest_mouse_exited() -> void:
 	$ForestHotspot.scale = Vector2.ONE
+
+func _on_ruins_mouse_entered() -> void:
+	$RuinsHotspot.scale = Vector2(1.2, 1.2)
+
+func _on_ruins_mouse_exited() -> void:
+	$RuinsHotspot.scale = Vector2.ONE
+
+func _on_castle_mouse_entered() -> void:
+	$CastleHotspot.scale = Vector2(1.2, 1.2)
+
+func _on_castle_mouse_exited() -> void:
+	$CastleHotspot.scale = Vector2.ONE
+
+func _on_pond_mouse_entered() -> void:
+	$PondHotspot.scale = Vector2(1.2, 1.2)
+
+func _on_pond_mouse_exited() -> void:
+	$PondHotspot.scale = Vector2.ONE
+
+func _on_beach_mouse_entered() -> void:
+	$BeachHotspot.scale = Vector2(1.2, 1.2)
+
+func _on_beach_mouse_exited() -> void:
+	$BeachHotspot.scale = Vector2.ONE
+
+func _on_lighthouse_mouse_entered() -> void:
+	$LighthouseHotspot.scale = Vector2(1.2, 1.2)
+
+func _on_lighthouse_mouse_exited() -> void:
+	$LighthouseHotspot.scale = Vector2.ONE
+
+func _on_lighthouse_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if is_transitioning:
+		return
+	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		return
+	is_transitioning = true
+	if sound_fx:
+		sound_fx.play_ui_click()
+	SceneRouter.goto("res://src/ui/typing/lighthouse_typing.tscn")
+
+func _on_tavern_mouse_entered() -> void:
+	$TavernHotspot.scale = Vector2(1.2, 1.2)
+
+func _on_tavern_mouse_exited() -> void:
+	$TavernHotspot.scale = Vector2.ONE
+
+func _on_guild_mouse_entered() -> void:
+	$GuildHotspot.scale = Vector2(1.2, 1.2)
+
+func _on_guild_mouse_exited() -> void:
+	$GuildHotspot.scale = Vector2.ONE
+
+func _on_library_mouse_entered() -> void:
+	$LibraryHotspot.scale = Vector2(1.2, 1.2)
+
+func _on_library_mouse_exited() -> void:
+	$LibraryHotspot.scale = Vector2.ONE
+
+func _on_library_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if is_transitioning:
+		return
+	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		return
+	is_transitioning = true
+	if sound_fx:
+		sound_fx.play_ui_click()
+	SceneRouter.goto("res://src/ui/memory/library_memory.tscn")
+
+func _on_guild_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if is_transitioning:
+		return
+	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		return
+	is_transitioning = true
+	if sound_fx:
+		sound_fx.play_ui_click()
+	SceneRouter.goto("res://src/ui/slot/guild_slot.tscn")
+
+func _on_tavern_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if is_transitioning:
+		return
+	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		return
+	is_transitioning = true
+	if sound_fx:
+		sound_fx.play_ui_click()
+	SceneRouter.goto("res://src/ui/puzzle/tavern_2048.tscn")
+
+func _on_beach_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if is_transitioning:
+		return
+	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		return
+	is_transitioning = true
+	if sound_fx:
+		sound_fx.play_ui_click()
+	SceneRouter.goto("res://src/ui/tetris/beach_tetris.tscn")
+
+func _on_pond_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if is_transitioning:
+		return
+	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		return
+	is_transitioning = true
+	if sound_fx:
+		sound_fx.play_ui_click()
+	SceneRouter.goto("res://src/ui/fishing/fishing.tscn")
 
 func _on_hotspot_input(_viewport: Node, event: InputEvent, _shape_idx: int, region_id: String) -> void:
 	if is_transitioning:
