@@ -51,7 +51,12 @@ func _ready() -> void:
 	_setup_background()
 	# 배치 (1280x720 기준)
 	$World/Player.position = Vector2(940, 420)
+	var forest_goblins: int = 1 + GameState.forest_clear_count if GameState.current_region_id == "forest" else 0
 	if GameState.current_region_id == "ruins":
+		enemy_node.position = Vector2(340, 500)
+		enemy2_node.position = Vector2(500, 500)
+		enemy2_node.visible = true
+	elif forest_goblins >= 2:
 		enemy_node.position = Vector2(340, 500)
 		enemy2_node.position = Vector2(500, 500)
 		enemy2_node.visible = true
@@ -145,6 +150,16 @@ func _setup_enemies() -> void:
 			sf.set_animation_loop("idle", true)
 			enemy_anim.sprite_frames = sf
 			enemy_anim.play("idle")
+			var forest_goblins: int = 1 + GameState.forest_clear_count if GameState.current_region_id == "forest" else 0
+			if forest_goblins >= 2:
+				var sf2 := SpriteFrames.new()
+				sf2.add_animation("idle")
+				sf2.add_frame("idle", tex, 1.0)
+				sf2.set_animation_loop("idle", true)
+				enemy2_anim.sprite_frames = sf2
+				enemy2_anim.play("idle")
+				enemy2_anim.flip_h = false
+				enemy2_anim.scale = Vector2(ENEMY_SCALE_DEFAULT, ENEMY_SCALE_DEFAULT)
 		enemy_anim.flip_h = false
 
 func _setup_shadows() -> void:
@@ -166,8 +181,13 @@ func _setup_shadows() -> void:
 	if GameState.current_region_id == "ruins":
 		enemy_shadow.scale = Vector2(ENEMY_SCALE_RUINS, ENEMY_SCALE_RUINS)
 		enemy2_shadow.scale = Vector2(ENEMY_SCALE_RUINS, ENEMY_SCALE_RUINS)
+		enemy2_shadow.visible = true
 	else:
-		enemy2_shadow.visible = false
+		var forest_goblins: int = 1 + GameState.forest_clear_count if GameState.current_region_id == "forest" else 0
+		if forest_goblins >= 2:
+			enemy2_shadow.visible = true
+		else:
+			enemy2_shadow.visible = false
 
 func _setup_battle_mode() -> void:
 	if GameState.is_first_battle:
@@ -192,14 +212,23 @@ func _setup_battle_mode() -> void:
 		enemy_hp = 45
 	else:
 		run_btn.visible = true
-		enemy_max_hp = 30
-		enemy_hp = 30
 		enemy_attack = 3
 		enemy_defense = 0
-		enemy1_max_hp = 0
-		enemy1_hp = 0
-		enemy2_max_hp = 0
-		enemy2_hp = 0
+		var forest_goblins: int = 1 + GameState.forest_clear_count if GameState.current_region_id == "forest" else 0
+		if forest_goblins >= 2:
+			enemy1_max_hp = 30
+			enemy1_hp = 30
+			enemy2_max_hp = 30
+			enemy2_hp = 30
+			enemy_max_hp = 60
+			enemy_hp = 60
+		else:
+			enemy_max_hp = 30
+			enemy_hp = 30
+			enemy1_max_hp = 0
+			enemy1_hp = 0
+			enemy2_max_hp = 0
+			enemy2_hp = 0
 
 func _on_attack() -> void:
 	if is_busy:
@@ -221,9 +250,9 @@ func _on_attack() -> void:
 	if GameState.tavern_2048_upgraded:
 		base_dmg *= 2
 	var dmg_to_enemy: int = maxi(1, base_dmg - enemy_defense)
-	var is_ruins_multi: bool = GameState.current_region_id == "ruins" && enemy2_max_hp > 0
+	var is_multi_enemy: bool = enemy2_max_hp > 0
 
-	if is_ruins_multi:
+	if is_multi_enemy:
 		# 한 명씩 타겟: 적1 먼저, 죽었으면 적2
 		if enemy1_hp > 0:
 			enemy1_hp = maxi(enemy1_hp - dmg_to_enemy, 0)
@@ -250,9 +279,9 @@ func _on_attack() -> void:
 		return
 
 	await get_tree().create_timer(0.2).timeout
-	# 적 턴: RUINS는 살아 있는 적 각각 공격
+	# 적 턴: 다중 적(유적/숲 고블린 2마리)은 살아 있는 적 각각 공격
 	var enemy_dmg: int = enemy_attack
-	if GameState.current_region_id == "ruins":
+	if is_multi_enemy:
 		var total_dmg: int = 0
 		if enemy1_hp > 0:
 			total_dmg += enemy_dmg
@@ -300,6 +329,7 @@ func _victory_flow() -> void:
 		gained_fragment = true
 	if not GameState.is_first_battle and GameState.current_region_id == "forest":
 		GameState.forest_cleared_once = true
+		GameState.forest_clear_count += 1
 	if not GameState.is_first_battle and GameState.current_region_id == "ruins":
 		GameState.ruins_cleared_once = true
 
@@ -320,13 +350,13 @@ func refresh_text() -> void:
 	run_btn.text = tr("BATTLE_RUN")
 
 func _all_enemies_defeated() -> bool:
-	if GameState.current_region_id == "ruins" && enemy2_max_hp > 0:
+	if enemy2_max_hp > 0:
 		return enemy1_hp <= 0 && enemy2_hp <= 0
 	return enemy_hp <= 0
 
 func _update_hud() -> void:
 	player_hp_label.text = "%s: %d/%d" % [tr("HUD_HP"), GameState.player_hp, GameState.player_max_hp]
-	if GameState.current_region_id == "ruins" && enemy2_max_hp > 0:
+	if enemy2_max_hp > 0:
 		enemy_hp_label.text = "%s: %d/%d\n%s: %d/%d" % [
 			tr("BATTLE_ENEMY_1"), enemy1_hp, enemy1_max_hp,
 			tr("BATTLE_ENEMY_2"), enemy2_hp, enemy2_max_hp
@@ -350,7 +380,7 @@ func _update_character_gauges() -> void:
 		player_gauge.max_value = GameState.player_max_hp
 		player_gauge.value = GameState.player_hp
 	if enemy_gauge and enemy_gauge.visible:
-		if GameState.current_region_id == "ruins" and enemy2_max_hp > 0:
+		if enemy2_max_hp > 0:
 			enemy_gauge.max_value = enemy1_max_hp
 			enemy_gauge.value = enemy1_hp
 			enemy_gauge.visible = enemy1_hp > 0

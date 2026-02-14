@@ -22,6 +22,7 @@ MAP_GOAL,목표: 숲의 이상 징후를 조사하라.,Objective: Investigate th
 MAP_HINT,힌트: 지역을 클릭해 이동하세요.,Hint: Click a region to travel.,ヒント: 地域をクリックして移動。,提示：点击地区移动。
 MAP_CLICK_HINT,▶ 지도에서 숲 지역을 클릭하세요,▶ Click the forest on the map,▶ 地図で森の地域をクリック,▶ 点击地图上的森林区域
 MAP_FOREST,숲,Forest,森,森林
+MAP_TREE_CASTLE,나무성,Tree Castle,木の城,树堡
 MAP_RUINS,유적,Ruins,遺跡,遗迹
 MAP_CASTLE,성,Castle,城,城堡
 MAP_POND,연못,Pond,池,池塘
@@ -30,11 +31,25 @@ MAP_LIGHTHOUSE,등대,Lighthouse,灯台,灯塔
 MAP_TAVERN,선술집,Tavern,酒場,酒馆
 MAP_GUILD,길드,Guild,ギルド,工会
 MAP_LIBRARY,도서관,Library,図書館,图书馆
+MAP_SOKOBAN,소코반,Sokoban,倉庫番,推箱子
 MAP_VOLCANO,화산,Volcano,火山,火山
+FLAVOR_SOKOBAN,상자를 목표에 밀어넣는 퍼즐.,Push boxes to goals. A puzzle game.,箱をゴールに押すパズル。,把箱子推到目标点的解谜游戏。
+TOAST_SOKOBAN,소코반으로 이동합니다,Heading to Sokoban.,倉庫番へ向かいます。,前往推箱子。
+SOKOBAN_START,시작,Start,スタート,开始
+SOKOBAN_PREV,이전,Prev,前へ,上一关
+SOKOBAN_NEXT,다음,Next,次へ,下一关
+SOKOBAN_LEVEL,레벨: %d,Level: %d,レベル: %d,关卡：%d
+SOKOBAN_MOVES,이동: %d,Moves: %d,手数: %d,步数：%d
+SOKOBAN_REWARD,보상: %dG,Reward: %dG,報酬: %dG,奖励：%dG
+SOKOBAN_CLEAR,클리어!,Clear!,クリア！,通关！
+BTN_CONTINUE,계속,Continue,続ける,继续
+HELP_SOKOBAN,"화살표 키로 이동. 상자를 밀어 목표(초록)에 모두 놓으면 클리어!","Use arrow keys to move. Push all boxes onto goals (green) to clear!","矢印キーで移動。箱をゴール（緑）に全て乗せてクリア！","使用方向键移动。将所有箱子推到目标(绿色)即可通关！"
 TOAST_FOREST,숲으로 이동합니다,Heading to the forest.,森へ向かいます。,前往森林。
+TOAST_TREE_CASTLE,나무성으로 이동합니다,Heading to the tree castle.,木の城へ向かいます。,前往树堡。
 TOAST_CASTLE,성으로 이동합니다,Heading to the castle.,城へ向かいます。,前往城堡。
 TOAST_VOLCANO,화산으로 이동합니다,Heading to the volcano.,火山へ向かいます。,前往火山。
 FLAVOR_CASTLE,마을·상점. 회복과 강화의 허브.,Town & shop. A hub for rest and upgrade.,街・ショップ。回復と強化の拠点。,城镇与商店。恢复与强化的据点。
+FLAVOR_TREE_CASTLE,숲 속의 나무 성채. 전투가 기다린다.,A wooden fortress in the forest. Battle awaits.,森の木の砦。戦闘が待つ。,森林中的木堡。战斗等待着你。
 CASTLE_INTRO,성 안에는 상점과 휴식 공간이 있다. 골드로 아이템을 구매할 수 있다.,The castle holds a shop and rest area. Spend gold to buy items.,城にはショップと休息の場がある。ゴールドでアイテムを購入できる。,城堡内有商店与休息处。可用金币购买道具。
 BTN_SHOP,상점 가기,Go to shop.,ショップへ,前往商店
 SHOP_TITLE,아이템 상점,Item Shop,アイテムショップ,道具商店
@@ -75,8 +90,12 @@ FLAVOR_RUINS,고대 유적이 남아 있다,Ancient ruins remain.,古代遺跡�
 FLAVOR_VOLCANO,보스: 화산의 드래곤,Boss: Volcano Dragon.,ボス: 火山のドラゴン。,首领：火山之龙。
 LOCKED_REASON_FOREST,숲의 위협을 먼저 해결해야 한다.,Clear the forest threat first.,森の脅威を先に解決せよ。,请先解决森林的威胁。
 LOCKED_DEFAULT,아직 갈 수 없다.,Not available yet.,まだ行けない。,尚无法前往。
+LOCKED_PANEL_TITLE,진입 불가,Entry Locked,進入不可,无法进入
+LOCKED_HINT_FOREST,먼저 숲 지역을 클리어한 뒤 유적에 진입할 수 있습니다.,Clear the forest first to enter the ruins.,先に森をクリアしてから遺跡へ入れます。,先通关森林后才能进入遗迹。
+BTN_CONFIRM,확인,OK,確認,确认
 REGION_INTRO,숲 안쪽에서 수상한 기척이 느껴진다…,Something stirs in the depths of the forest…,森の奥で不審な気配がする…,森林深处似有异样……
 REGION_INTRO_RUINS,무너진 유적에서 묘한 기운이 느껴진다…,A strange aura emanates from the crumbling ruins….,崩れた遺跡から妙な気配がする…,崩塌的遗迹中传来诡异的气息……
+REGION_INTRO_TREE_CASTLE,나무로 만들어진 성채. 누군가 지켜보고 있다…,A fortress made of wood. Someone is watching…,木で作られた砦。誰かが見ている…,木制堡垒。有人在注视着……
 HINT_FOREST_CLEAR,숲의 기척이 한결 잦아든 것 같다. 이제 자유롭게 탐험할 수 있습니다.,The forest feels calmer. You may explore freely now.,森の気配が落ち着いたようだ。自由に探索できる。,森林的气息平静了下来。现在可以自由探索了。
 HINT_RUINS,유적을 조사해 보자.,Investigate the ruins.,遺跡を調査しよう。,调查遗迹吧。
 BTN_FIGHT,전투 시작,Battle,戦闘開始,开始战斗
@@ -115,6 +134,20 @@ SLOT_JACKPOT,잭팟! +1000 골드!,Jackpot! +1000 Gold!,ジャックポット! +
 SLOT_NO_GOLD,골드가 부족합니다,Not enough gold,ゴールドが足りません,金币不足
 HELP_SLOT,5골드로 스핀. 3개/2개 일치 시 보상. 7,7,7 잭팟 1000골드!,Spend 5G to spin. Match 3 or 2 for reward. 7,7,7 = 1000G jackpot!,5Gでスピン。3つ/2つ揃うと報酬。7,7,7で1000G!,花费5金币旋转。3个或2个相同获得奖励。7,7,7=1000金币！
 HELP_MEMORY,카드를 클릭해 같은 짝을 찾으세요. 최소 이동으로 모두 맞추면 성공!,Click cards to find matching pairs. Match all with few moves to win!,カードをクリックして同じペアを探す。少ない手数で揃えよう！,点击卡片找到相同配对。用最少步数完成即获胜！
+BTN_START_DEFENSE,방어전 시작,Start Defense,防衛戦開始,开始防御
+TD_NORMAL,일반,Normal,通常,普通
+TD_HARD,어려움,Hard,難しい,困难
+TD_GOLD,골드: %d,Gold: %d,ゴールド: %d,金币：%d
+TD_WAVE,웨이브: %d/%d,Wave: %d/%d,ウェーブ: %d/%d,波次：%d/%d
+TD_LIVES,생명: %d,Lives: %d,ライフ: %d,生命：%d
+TD_VICTORY,승리!,Victory!,勝利！,胜利！
+TD_DEFEAT,패배,Defeat,敗北,失败
+TD_START_WAVE,웨이브 시작,Start Wave,ウェーブ開始,开始波次
+TD_TOWER_ARCHER,화살탑,Arrow Tower,矢塔,箭塔
+TD_TOWER_CANNON,대포탑,Cannon Tower,砲塔,炮塔
+TD_TOWER_HEAVY_CANNON,중대포탑,Heavy Cannon Tower,重砲塔,重型炮塔
+TD_TOWER_SLOW,둔화탑,Slow Tower,減速塔,减速塔
+HELP_TD,"타워를 클릭해 경로 주변 슬롯에 배치하세요. 화살탑(단일), 대포탑(범위), 둔화탑(감속). 웨이브를 모두 막으면 승리!","Place towers on slots along the path. Arrow (single), Cannon (AOE), Slow (debuff). Survive all waves to win!","塔をスロットに配置。矢・砲・減速。全ウェーブ防いで勝利！","在路径旁的槽位放置塔。箭塔(单体)、炮塔(范围)、减速塔。守住所有波次即获胜！"
 MEMORY_MOVES,이동: %d,Moves: %d,手数: %d,步数：%d
 MEMORY_COMPLETE,%d회 만에 완료!,Completed in %d moves!,%d手でクリア！,%d步完成！
 BATTLE_ATTACK,공격,Attack,攻撃,攻击

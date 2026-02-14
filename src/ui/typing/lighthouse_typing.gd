@@ -104,7 +104,9 @@ func _on_text_submitted(text: String) -> void:
 	for i in range(falling_words.size() - 1, -1, -1):
 		var fw: Dictionary = falling_words[i]
 		if fw["word"].to_lower() == t:
-			fw["label"].queue_free()
+			var lbl: Node = fw.get("label")
+			if is_instance_valid(lbl):
+				lbl.queue_free()
 			falling_words.remove_at(i)
 			score += 10 * level
 			words_cleared += 1
@@ -129,8 +131,9 @@ func _start_game() -> void:
 	game_over_panel.visible = false
 	result_label.text = ""
 	for fw in falling_words:
-		if fw["label"].is_inside_tree():
-			fw["label"].queue_free()
+		var lbl: Node = fw.get("label")
+		if is_instance_valid(lbl) and lbl.is_inside_tree():
+			lbl.queue_free()
 	falling_words.clear()
 	_update_ui()
 	input_edit.grab_focus()
@@ -166,11 +169,15 @@ func _process(delta: float) -> void:
 		_spawn_word()
 	var to_remove: Array = []
 	for fw in falling_words:
+		var lbl: Node = fw.get("label")
+		if not is_instance_valid(lbl):
+			to_remove.append(fw)
+			continue
 		fw["y"] += fall_speed * delta
-		fw["label"].position.y = fw["y"]
+		lbl.position.y = fw["y"]
 		if fw["y"] > bottom:
 			to_remove.append(fw)
-			fw["label"].queue_free()
+			lbl.queue_free()
 			lives -= 1
 			if lives <= 0:
 				_game_over()

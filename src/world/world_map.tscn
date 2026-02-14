@@ -3,16 +3,22 @@
 [ext_resource type="Script" path="res://src/world/world_map.gd" id="1_script"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_forest"]
-radius = 100.0
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tree_castle"]
+radius = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sokoban"]
+radius = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ruins"]
-radius = 100.0
+radius = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_castle"]
 radius = 80.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pond"]
-radius = 60.0
+radius = 30.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_beach"]
 radius = 60.0
@@ -70,9 +76,52 @@ text = "✓"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TreeCastleHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(1000, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeCastleHotspot"]
+shape = SubResource("CircleShape2D_tree_castle")
+
+[node name="DebugLabel" type="Label" parent="TreeCastleHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.85, 0.95, 0.75, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "나무성"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SokobanHotspot" type="Area2D" parent="."]
+input_pickable = true
+position = Vector2(880, 180)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SokobanHotspot"]
+shape = SubResource("CircleShape2D_sokoban")
+
+[node name="DebugLabel" type="Label" parent="SokobanHotspot"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.12, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "소코반"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RuinsHotspot" type="Area2D" parent="."]
 input_pickable = true
 position = Vector2(740, 320)
+z_index = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RuinsHotspot"]
 shape = SubResource("CircleShape2D_ruins")
@@ -125,9 +174,23 @@ text = "✓"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RuinsLockedBadge" type="Label" parent="RuinsHotspot"]
+visible = false
+offset_left = -48.0
+offset_top = -28.0
+offset_right = 48.0
+offset_bottom = -12.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.7, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+text = "🔒"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PondHotspot" type="Area2D" parent="."]
 input_pickable = true
 position = Vector2(820, 460)
+z_index = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PondHotspot"]
 shape = SubResource("CircleShape2D_pond")

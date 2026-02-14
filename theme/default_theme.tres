@@ -1,7 +1,5 @@
-[gd_resource type="Theme" format=3 load_steps=2]
-
-[ext_resource type="FontFile" path="res://fonts/NotoSansCJK-Regular.ttc" id="1_font"]
+[gd_resource type="Theme" format=3 uid="uid://default_theme"]
 
 [resource]
-default_font = ExtResource("1_font")
+default_font = null
 default_font_size = 16

@@ -349,6 +349,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_up"):
 		_rotate()
 		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("ui_page_up"):
+	elif event.is_action_pressed("ui_page_up") or event.is_action_pressed("ui_select"):
 		_hard_drop()
 		get_viewport().set_input_as_handled()

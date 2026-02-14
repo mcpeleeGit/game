@@ -1,0 +1,189 @@
+[gd_scene load_steps=2 format=3 uid="uid://forest_sokoban"]
+
+[ext_resource type="Script" path="res://src/ui/sokoban/forest_sokoban.gd" id="1_script"]
+
+[node name="ForestSokoban" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12, 0.22, 0.18, 0.98)
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.92, 0.8, 1)
+theme_override_font_sizes/font_size = 28
+text = "소코반"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="LevelLabel" type="Label" parent="VBox/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.85, 1)
+theme_override_font_sizes/font_size = 18
+text = "레벨: 1"
+
+[node name="MovesLabel" type="Label" parent="VBox/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "이동: 0"
+
+[node name="RewardLabel" type="Label" parent="VBox/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 18
+text = "보상: 10G"
+
+[node name="GameArea" type="Control" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(384, 336)
+
+[node name="Buttons" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="StartButton" type="Button" parent="VBox/Buttons"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "시작"
+
+[node name="PrevLevelBtn" type="Button" parent="VBox/Buttons"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "이전"
+
+[node name="NextLevelBtn" type="Button" parent="VBox/Buttons"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "다음"
+
+[node name="BackButton" type="Button" parent="VBox/Buttons"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "돌아가기"
+
+[node name="HelpButton" type="Button" parent="VBox/Buttons"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "게임 방법"
+
+[node name="ResultPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -70.0
+offset_right = 180.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="ResultPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="ResultPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ResultLabel" type="Label" parent="ResultPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 24
+text = "클리어!"
+horizontal_alignment = 1
+
+[node name="RewardResultLabel" type="Label" parent="ResultPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 18
+text = "+10 골드"
+horizontal_alignment = 1
+
+[node name="ContinueBtn" type="Button" parent="ResultPanel/Margin/VBox"]
+layout_mode = 2
+text = "계속"
+
+[node name="HelpPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -100.0
+offset_right = 220.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="HelpPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="HelpPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HelpLabel" type="Label" parent="HelpPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+text = "상자를 목표에 모두 놓으면 클리어! 화살표 키로 이동."
+autowrap_mode = 3
+
+[node name="CloseBtn" type="Button" parent="HelpPanel/Margin/VBox"]
+layout_mode = 2
+text = "닫기"
